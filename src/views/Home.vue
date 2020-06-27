@@ -98,7 +98,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("http://localhost:5000").then(response => {
+    axios.get("http://149.202.40.137:5000").then(response => {
       this.info = response;
     });
     console.log(this.info);
