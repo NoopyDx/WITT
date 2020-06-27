@@ -45,5 +45,10 @@ def hello():
     return shuffler(json.dumps(data.find_one({'id': id_value}), indent=4, default=json_util.default, ensure_ascii=False))
 
 
+@app.route("/test")
+def test():
+    return "<h1 style='color:blue'>Hello There!</h1>"
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
