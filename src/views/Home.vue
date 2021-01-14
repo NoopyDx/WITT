@@ -18,16 +18,19 @@
           <v-card
             v-for="answer in info.data.answer"
             :key="answer"
-            :class="{ 'winAnimation': answered && answer==info.data.rep }"
+            :class="{ winAnimation: answered && answer == info.data.rep }"
             id="answer-card"
             :style="
-            answered
-              ?  answer == info.data.rep ? 'background-color:green;color:whitesmoke'
-              : 'background-color: red; color :whitesmoke' : 'background-color: #fad390;'
-          "
+              answered
+                ? answer == info.data.rep
+                  ? 'background-color:green;color:whitesmoke'
+                  : 'background-color: red; color :whitesmoke'
+                : 'background-color: #fad390;'
+            "
             @click="sendAnswer(answer)"
             :disabled="answered"
-          >{{ answer }}</v-card>
+            >{{ answer }}</v-card
+          >
         </div>
 
         <!-- </v-row> -->
@@ -77,7 +80,7 @@ export default {
       info: null,
       result: null,
       answered: false,
-      textResult: null
+      textResult: null,
     };
   },
   components: {},
@@ -95,14 +98,15 @@ export default {
     },
     reloadPage() {
       window.location.reload();
-    }
+    },
   },
   mounted() {
-    axios.get("http://149.202.40.137:5000").then(response => {
+    axios.get("http://149.202.40.137:5001/hello").then((response) => {
+      // axios.get("http://127.0.0.1:5001/hello").then((response) => {
       this.info = response;
     });
     console.log(this.info);
-  }
+  },
 };
 </script>
 <style scoped>

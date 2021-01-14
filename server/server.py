@@ -5,7 +5,7 @@ from flask import jsonify, request
 from bson import json_util
 import json
 import pymongo
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from datetime import datetime
 import random
 
@@ -38,7 +38,8 @@ def shuffler(data):
     return({"url": data["url"], "answer": answer, "rep": data["g_answer"]})
 
 
-@app.route('/')
+@app.route('/hello')
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def hello():
     id_value = random.randint(0, 2)
     print(id_value)
@@ -46,6 +47,7 @@ def hello():
 
 
 @app.route("/test")
+@cross_origin(origin='*', headers=['Content-Type', 'Authorization'])
 def test():
     return "<h1 style='color:blue'>Hello There!</h1>"
 
