@@ -4,7 +4,10 @@ WORKDIR /app/frontend
 COPY ./package.json ./
 COPY ./package-lock.json ./
 RUN npm ci --silent
-COPY ./src/ ./
+COPY ./src/ ./src/
+COPY ./.eslintrc.js ./
+COPY ./babel.config.js ./
+
 RUN npm run build
 
 FROM nginx:stable-alpine
